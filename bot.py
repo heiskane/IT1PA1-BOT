@@ -42,8 +42,9 @@ bot = commands.Bot(command_prefix="!")
 
 
 @bot.command(name="lukkari")
-async def on_message(ctx, arg: Optional[str] = datetime.today().strftime("%Y-%m-%d")):
-    generate_lukkari(arg)
+async def on_message(ctx, arg: Optional[str] = None):
+    date = datetime.today().strftime("%Y-%m-%d") if not arg else None
+    generate_lukkari(date)
     await ctx.send(file=discord.File("lukkari.png"))
 
 
